@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -15,8 +16,10 @@ const Login = () => {
     const onSubmit = (data) => {
         signIn(data.email, data.password);
         console.log(data)
+        Swal.fire("User created successfully ,and please login now.");
         navigate('/')
     };
+   
     return (
         <div>
             <div className="min-h-screen hero bg-base-200">
@@ -41,7 +44,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input {...register("password", { required: true })} type="password" placeholder="Email" className="input input-bordered" />
+                                <input {...register("password", { required: true })} type="password" placeholder="password" className="input input-bordered" />
                                 {errors.password && <span className="text-red-600">This field is required</span>}
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

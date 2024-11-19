@@ -10,47 +10,63 @@ import Contact from './Pages/Contact/Contact';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import AuthProvider from './AuthProvider/AuthProvider.';
+import DashboardLayoutes from './layoutes/DashboardLayoutes';
+import PrivateRoute from './Components/Private/PrivateRoute';
+import Overview from './Pages/DashboardComponents/Overview/Overview';
 // import AuthProvider from './AuthProvider/AuthProvider.';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayoutes />,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home/>
+        path: "/",
+        element: <Home />
       },
       {
-        path:"/Products",
-        element:<Products/>
+        path: "/Products",
+        element: <Products />
       },
       {
-        path:"/About",
-        element:<About/>
+        path: "/About",
+        element: <About />
       },
       {
-        path:"/Contact-us",
-        element:<Contact/>
+        path: "/Contact-us",
+        element: <Contact />
       },
       {
-        path:"/Register",
-        element:<Register/>
+        path: "/Register",
+        element: <Register />
       },
       {
-        path:"/Login",
-        element:<Login/>
+        path: "/Login",
+        element: <Login />
       },
     ]
   },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute>
+      <DashboardLayoutes />
+    </PrivateRoute>,
+    children: [
+      {
+        path: "/dashboard/Overview",
+        element:<Overview/>
+
+      }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <AuthProvider>
+    <AuthProvider>
 
-    <RouterProvider router={router} future={{ v7_skipActionErrorRevalidation: true }} />
-   </AuthProvider>
-   
+      <RouterProvider router={router} future={{ v7_skipActionErrorRevalidation: true }} />
+    </AuthProvider>
+
   </StrictMode>
 );

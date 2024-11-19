@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import SocialLogin from "../Login/SocialLogin";
+import axios from "axios";
+import Swal from 'sweetalert2'
 
 const Register = () => {
-    const {user, createUser,updateUserProfile,logOut } = useAuth();
+    const navigate = useNavigate()
+    const {user,setUser, createUser,updateUserProfile,logOut } = useAuth();
 
     const {
         register,
@@ -14,11 +17,34 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        createUser(data.email, data.password);
-        updateUserProfile(data.name,data.photo)
-        console.log(data)
-       logOut();
+    const onSubmit = async(data) => {
+        const email= data.email;
+        const role = data.role;
+        const status = role ==="buyer"? "approved":"pending";
+        const withList =[];
+        const userData ={email,role,status,withList}
+        try{
+            const result = await createUser(data.email, data.password)
+            await updateUserProfile(data.name,data.photo);
+            setUser({
+                ...result?.user,
+                displayName:data.name,
+                photoURL:data.photo,
+            })
+            const res = await axios.post('http://localhost:3000/users',userData)
+            console.log("This is res",res.data);
+            if(res.data.insertedId){
+                Swal.fire("User created successfully ,and please login now.");
+            }
+            console.log(userData)
+            logOut();
+            navigate('/')
+            
+        }catch(error){
+            console.log(error)
+        }
+       
+        
     };
 
     return (
@@ -88,7 +114,7 @@ const Register = () => {
                             </div>
 
                             <div className="mt-6 form-control">
-                                <button type="submit" className="btn btn-primary">Register</button>
+                                <button type="submit" className="btn btn-primary">Register </button>
                             </div>
                         </form>
                         <div className="mb-8 ml-8">

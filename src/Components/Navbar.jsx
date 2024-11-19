@@ -35,7 +35,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
+                                className="w-5 h-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -52,10 +52,10 @@ const Navbar = () => {
                             {nvaBer}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">Gadget Shop</a>
+                    <a className="text-xl btn btn-ghost">Gadget Shop</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                <div className="hidden navbar-center lg:flex">
+                    <ul className="px-1 menu menu-horizontal">
                         {nvaBer}
                     </ul>
                 </div>
@@ -65,16 +65,14 @@ const Navbar = () => {
                             <div className="w-10 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    src={`${user.photoURL}` ||"https://i.ibb.co.com/ZBFgsRW/profile.png"} />
                             </div>
                         </div>
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li>
-                                <a className="justify-between">
-                                    Dashboard
-                                </a>
+                                <NavLink to="/dashboard">Dashboad</NavLink>
                             </li>
                             <li><a>Settings</a></li>
                             <button onClick={handleLogout} className="btn btn-outline btn-success btn-sm">Logout</button>
