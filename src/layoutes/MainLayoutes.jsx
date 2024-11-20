@@ -5,8 +5,8 @@ import Footer from "../Components/Footer"
 
 const MainLayoutes = () => {
   return (
-    <div className="font-bold">
-      <div className="min-h-full mx-auto">
+    <div className="font-bold ">
+      <div className="min-h-full bg-base-100">
         <Navbar/>
       </div>
       <div className="min-h-screen m-10">
