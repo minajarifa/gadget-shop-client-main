@@ -1,0 +1,83 @@
+[
+    {
+      "title": "Wireless Mouse",
+      "brand": "Logitech",
+      "price": 25.99,
+      "stock": 150,
+      "photo": "https://i.ibb.co.com/2dvzrrb/download.jpg",
+      "category": "Gadgets",
+      "description": "A high-performance wireless mouse with ergonomic design and a long battery life.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Bluetooth Headphones",
+      "brand": "Sony",
+      "price": 99.99,
+      "stock": 80,
+      "photo": "https://i.ibb.co.com/zNqhy73/download.jpg",
+      "category": "Gadgets",
+      "description": "Noise-cancelling Bluetooth headphones with premium sound quality and long-lasting battery.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Smartphone",
+      "brand": "Samsung",
+      "price": 799.99,
+      "stock": 30,
+      "photo": "https://ibb.co.com/wprZBTR",
+      "category": "Gadgets",
+      "description": "Latest Samsung smartphone with a 6.5-inch display, 128GB storage, and 48MP camera.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Laptop",
+      "brand": "Dell",
+      "price": 1200.00,
+      "stock": 25,
+      "photo": "https://i.ibb.co.com/4ssfxbz/download.jpg",
+      "category": "Gadgets",
+      "description": "Dell Inspiron 15 laptop with Intel i7 processor, 16GB RAM, and 512GB SSD for fast performance.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Smartwatch",
+      "brand": "Apple",
+      "price": 399.99,
+      "stock": 50,
+      "photo": "https://i.ibb.co.com/WH2NzR5/download.jpg",
+      "category": "Gadgets",
+      "description": "Apple Watch Series 8 with advanced health tracking, GPS, and always-on display.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Bluetooth Earbuds",
+      "brand": "Bose",
+      "price": 129.99,
+      "stock": 200,
+      "photo": "https://i.ibb.co.com/zNqhy73/download.jpg",
+      "category": "Gadgets",
+      "description": "Wireless Bluetooth earbuds with noise-cancellation and 12-hour battery life.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "Portable Charger",
+      "brand": "Anker",
+      "price": 29.99,
+      "stock": 120,
+      "photo": "https://i.ibb.co.com/ScgSRDF/download.jpg",
+      "category": "Gadgets",
+      "description": "Anker portable charger with 20,000mAh capacity to charge your devices multiple times.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "VR Headset",
+      "brand": "Oculus",
+      "price": 399.99,
+      "stock": 150,
+      "photo": "https://i.ibb.co.com/pzKC4Qm/download.jpg",
+      "category": "Gadgets",
+      "description": "Oculus Quest 2 VR headset for immersive gaming and entertainment with wireless freedom.",
+      "sellerEmail": "asma@gmail.com"
+    }
+  ]
+  

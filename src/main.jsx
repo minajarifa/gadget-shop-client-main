@@ -63,10 +63,10 @@ const router = createBrowserRouter([
       // seller Router
       {
         path: "/dashboard/my-products",
-        element: (<PrivateRoute>
-
+        element: (
+        // <PrivateRoute>
           <MyProducts />
-        </PrivateRoute>
+        // </PrivateRoute>
         )
 
       },
