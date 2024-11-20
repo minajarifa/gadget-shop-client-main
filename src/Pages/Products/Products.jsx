@@ -11,22 +11,26 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
-    const [sort,setSort]=useState('asc');
-    const [brand,setBrand]=useState("");
-    const [category,setCategory]=useState("");
-    console.log(brand,search,sort,category);
-    
+    const [sort, setSort] = useState('asc');
+    const [brand, setBrand] = useState("");
+    const [category, setCategory] = useState("");
+    const [uniqueBrand, setUniqueBrand] = useState([])
+    const [uniquecategory, setUniquecategory] = useState([])
+    console.log(brand, search, sort, category);
+
     useEffect(() => {
         setLoading(true);
         const fetch = async () => {
             await axios.get(`http://localhost:3000/all-products?title=${search}&sort=${sort}&brand=${brand}&category=${category}`).then((res) => {
-                setProducts(res.data);
+                setProducts(res.data.products);
+                setUniqueBrand(res.data.brand);
+                setUniquecategory(res.data.category)
                 setLoading(false)
-                // console.log("res.data", res.data)
+                console.log("res.data", res.data)
             })
         }
         fetch()
-    }, [search,sort,brand,category])
+    }, [search, sort, brand, category])
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -34,7 +38,7 @@ const Products = () => {
         e.target.search.value = ""
     }
 
-    const handleReset =()=>{
+    const handleReset = () => {
         setSearch("")
         setBrand("")
         setCategory("")
@@ -48,13 +52,13 @@ const Products = () => {
             <h1 className="my-8 text-2xl font-semibold text-center">All Products </h1>
             {/* search and sort */}
             <div className="items-center justify-between w-full mb-6 lg:flex">
-                <SearchBar handleSearch={handleSearch}/>
-                <SortByPrice  setSort={setSort}/>
+                <SearchBar handleSearch={handleSearch} />
+                <SortByPrice setSort={setSort} />
             </div>
             {/* content */}
             <div className="grid grid-cols-12">
                 <div className="col-span-2">
-                    <FilterBar setBrand={setBrand} setCategory={setCategory} handleReset={handleReset}/>
+                    <FilterBar uniqueBrand={uniqueBrand} uniquecategory={uniquecategory} setBrand={setBrand} setCategory={setCategory} handleReset={handleReset} />
                 </div>
                 {/*All Products */}
                 <div className="col-span-10">
