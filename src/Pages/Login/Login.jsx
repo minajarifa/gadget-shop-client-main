@@ -16,7 +16,7 @@ const Login = () => {
     const onSubmit = (data) => {
         signIn(data.email, data.password);
         console.log(data)
-        Swal.fire("User created successfully ,and please login now.");
+        Swal.fire("User Login now successfully");
         navigate('/')
     };
    

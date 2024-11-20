@@ -13,6 +13,9 @@ import AuthProvider from './AuthProvider/AuthProvider.';
 import DashboardLayoutes from './layoutes/DashboardLayoutes';
 import PrivateRoute from './Components/Private/PrivateRoute';
 import Overview from './Pages/DashboardComponents/Overview/Overview';
+// import SellerRoute from './Components/Private/SellerRoute';
+import MyProducts from './Pages/DashboardComponents/Overview/Seller/MyProducts';
+import AddProduct from './Pages/DashboardComponents/Overview/Seller/AddProduct';
 // import AuthProvider from './AuthProvider/AuthProvider.';
 
 const router = createBrowserRouter([
@@ -54,9 +57,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/Overview",
-        element:<Overview/>
+        element: <Overview />
 
-      }
+      },
+      // seller Router
+      {
+        path: "/dashboard/my-products",
+        element: (<PrivateRoute>
+
+          <MyProducts />
+        </PrivateRoute>
+        )
+
+      },
+      {
+        path: "/dashboard/add-products",
+        element: (
+          <AddProduct />
+       )
+
+      },
     ]
   }
 ]);
