@@ -10,6 +10,27 @@
       "sellerEmail": "asma@gmail.com"
     },
     {
+      "title": "Wireless Mouse",
+      "brand": "Logitech",
+      "price": 25.99,
+      "stock": 150,
+      "photo": "https://i.ibb.co.com/2dvzrrb/download.jpg",
+      "category": "Logitech",
+      "description": "A high-performance wireless mouse with ergonomic design and a long battery life.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    
+    {
+      "title": "Bluetooth Headphones",
+      "brand": "Sony",
+      "price": 99.99,
+      "stock": 80,
+      "photo": "https://i.ibb.co.com/zNqhy73/download.jpg",
+      "category": "Gadgets",
+      "description": "Noise-cancelling Bluetooth headphones with premium sound quality and long-lasting battery.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
       "title": "Bluetooth Headphones",
       "brand": "Sony",
       "price": 99.99,
@@ -25,7 +46,7 @@
       "price": 799.99,
       "stock": 30,
       "photo": "https://ibb.co.com/wprZBTR",
-      "category": "Gadgets",
+      "category": "Samsung",
       "description": "Latest Samsung smartphone with a 6.5-inch display, 128GB storage, and 48MP camera.",
       "sellerEmail": "asma@gmail.com"
     },
@@ -59,6 +80,7 @@
       "description": "Wireless Bluetooth earbuds with noise-cancellation and 12-hour battery life.",
       "sellerEmail": "asma@gmail.com"
     },
+    
     {
       "title": "Portable Charger",
       "brand": "Anker",
@@ -67,6 +89,16 @@
       "photo": "https://i.ibb.co.com/ScgSRDF/download.jpg",
       "category": "Gadgets",
       "description": "Anker portable charger with 20,000mAh capacity to charge your devices multiple times.",
+      "sellerEmail": "asma@gmail.com"
+    },
+    {
+      "title": "VR Headset",
+      "brand": "Oculus",
+      "price": 399.99,
+      "stock": 150,
+      "photo": "https://i.ibb.co.com/pzKC4Qm/download.jpg",
+      "category": "Gadgets",
+      "description": "Oculus Quest 2 VR headset for immersive gaming and entertainment with wireless freedom.",
       "sellerEmail": "asma@gmail.com"
     },
     {

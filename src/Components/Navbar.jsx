@@ -1,16 +1,19 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useUserData from "../hooks/useUserData";
 
 
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    const navigate =useNavigate()
-  const  handleLogout=()=>{
-    logOut()
-    .then(()=>{
-        navigate('/login');
-    })
+    const useData=useUserData();
+    console.log("useData",useData)
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                navigate('/login');
+            })
     }
     const nvaBer = <>
         <li>
@@ -60,12 +63,18 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    {/* extra notification */}
+                    <button className="btn">
+                        Inbox
+                        <div className="badge badge-secondary">+{useData?.wishList?.length}</div>
+                    </button>
+                    {/* extra notification end */}
                     {user ? <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src={`${user.photoURL}` ||"https://i.ibb.co.com/ZBFgsRW/profile.png"} />
+                                    src={`${user.photoURL}` || "https://i.ibb.co.com/ZBFgsRW/profile.png"} />
                             </div>
                         </div>
                         <ul

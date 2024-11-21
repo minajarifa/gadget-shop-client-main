@@ -8,7 +8,7 @@ import useUserData from "../../hooks/useUserData";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
-
+import { GiLoveMystery } from "react-icons/gi";
 const sellerRoutes = [
     {
         id: 1,
@@ -25,72 +25,87 @@ const sellerRoutes = [
 ]
 export default function Sidebar() {
     const userData = useUserData();
-    console.log("userDada",userData)
+    console.log("userDada", userData)
     const { logout } = useAuth();
     return (
-        <div className="min-h-screen px-8 py-16 text-gray-900 bg-gray-200 border-r-2 border-black">
-            <h1 className="mb-8 text-3xl font-bold">Gadget  Shop</h1>
-            <ul className="flex flex-col gap-2">
-                <li className="border border-black rounded-md b-2">
-                    <Link to="/Dashboard/Overview">
-                        <div className="flex">
-                            <GrOverview className="m-2" />
-                            Overview
-                        </div>
-                    </Link>
-                </li>
-                {
-                    userData?.role === "seller" &&
-                    //  <>
-                    //     <li className="border border-black rounded-md b-2">
-                    //         <Link to="/dashboard/add-products/">
-                    //             <div className="flex">
-                    //                 <IoMdAdd className="m-2"/>
-                    //                 Add Products
-                    //             </div>
-                    //         </Link>
-                    //     </li>
-                    //     <li className="border border-black rounded-md b-2">
-                    //         <Link to="/dashboard/my-products">
-                    //             <div className="flex">
-                    //                 <MdOutlineInventory2 className="m-2" />
-                    //                 My Products
-                    //             </div>
-                    //         </Link>
-                    //     </li>
-                    // </>
-                    sellerRoutes.map((routes) => (
-                        <li key={routes.id} className="border border-black rounded-md b-2">
-                            <Link to={routes?.route}>
+        <div>
+            {/*  main sideber*/}
+            <div className="min-h-screen px-8 py-16 text-gray-900 bg-gray-200 border-r-2 border-black">
+                <h1 className="mb-8 text-3xl font-bold">Gadget  Shop</h1>
+                <ul className="flex flex-col gap-2">
+                    <li className="border border-black rounded-md b-2">
+                        <Link to="/Dashboard/Overview">
+                            <div className="flex">
+                                <GrOverview className="m-2" />
+                                Overview
+                            </div>
+                        </Link>
+                    </li>
+                    {
+                        userData?.role === "seller" &&
+                        //  <>
+                        //     <li className="border border-black rounded-md b-2">
+                        //         <Link to="/dashboard/add-products/">
+                        //             <div className="flex">
+                        //                 <IoMdAdd className="m-2"/>
+                        //                 Add Products
+                        //             </div>
+                        //         </Link>
+                        //     </li>
+                        //     <li className="border border-black rounded-md b-2">
+                        //         <Link to="/dashboard/my-products">
+                        //             <div className="flex">
+                        //                 <MdOutlineInventory2 className="m-2" />
+                        //                 My Products
+                        //             </div>
+                        //         </Link>
+                        //     </li>
+                        // </>
+                        sellerRoutes.map((routes) => (
+                            <li key={routes.id} className="border border-black rounded-md b-2">
+                                <Link to={routes?.route}>
+                                    <div className="flex">
+                                        <p className="m-2" >
+                                            {routes.icon}
+                                        </p>
+                                        <p>{routes.title}</p>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))
+                    }
+                    {
+                        userData?.role === "buyer" && <li className="border border-black rounded-md b-2">
+                            <Link to="/dashboard/MyWishList">
                                 <div className="flex">
-                                    <p className="m-2" >
-                                    {routes.icon}
-                                    </p> 
-                                    <p>{routes.title}</p>
+                                    <GiLoveMystery className="m-2" />
+                                    My WishList
                                 </div>
                             </Link>
                         </li>
-                    ))
-                }
+                    }
 
+                    <li className="border border-black rounded-md b-2">
+                        <Link to="/">
+                            <div className="flex">
+                                <MdHome className="m-2" />
+                                Home
+                            </div>
+                        </Link>
+                    </li>
+                    <li onClick={logout} className="border border-black rounded-md b-2">
+                        <button>
+                            <div className="flex">
+                                <TbLogout2 className="m-2" />
+                                Logout
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
 
-                <li className="border border-black rounded-md b-2">
-                    <Link to="/">
-                        <div className="flex">
-                            <MdHome className="m-2" />
-                            Home
-                        </div>
-                    </Link>
-                </li>
-                <li onClick={() => logout()} className="border border-black rounded-md b-2">
-                    <button>
-                        <div className="flex">
-                            <TbLogout2 className="m-2" />
-                            Logout
-                        </div>
-                    </button>
-                </li>
-            </ul>
         </div>
     )
 }
+
+

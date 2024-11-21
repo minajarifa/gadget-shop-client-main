@@ -5,6 +5,8 @@ import SortByPrice from "../../Components/Dashboard/Searchbar/SortByPrice";
 import axios from "axios";
 import Loding from "../../Components/Loding";
 import ProductCurd from "../Home/Featured/ProductCurd";
+import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
+
 
 
 const Products = () => {
@@ -15,22 +17,26 @@ const Products = () => {
     const [brand, setBrand] = useState("");
     const [category, setCategory] = useState("");
     const [uniqueBrand, setUniqueBrand] = useState([])
-    const [uniquecategory, setUniquecategory] = useState([])
+    const [uniquecategory, setUniquecategory] = useState([]);
+    const [page, setPage] = useState([1]);
+    const [totalPage, setTotalPage] = useState([1]);
     console.log(brand, search, sort, category);
 
     useEffect(() => {
         setLoading(true);
         const fetch = async () => {
-            await axios.get(`http://localhost:3000/all-products?title=${search}&sort=${sort}&brand=${brand}&category=${category}`).then((res) => {
-                setProducts(res.data.products);
-                setUniqueBrand(res.data.brand);
-                setUniquecategory(res.data.category)
-                setLoading(false)
-                console.log("res.data", res.data)
-            })
+            await axios.get(`http://localhost:3000/all-products?title=${search}&page=${page}&limit=9&sort=${sort}&brand=${brand}&category=${category}`)
+                .then((res) => {
+                    console.log("res.data", res.data)
+                    setProducts(res.data.products);
+                    setUniqueBrand(res.data.brand);
+                    setUniquecategory(res.data.category)
+                    setTotalPage(Math.ceil(res.data.totalProodacts / 9));
+                    setLoading(false)
+                })
         }
-        fetch()
-    }, [search, sort, brand, category])
+        fetch();
+    }, [search, sort, brand, category, page])
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -44,6 +50,13 @@ const Products = () => {
         setCategory("")
         setSort("asc")
         window.location.reload()
+    }
+
+    const handlePageChange = (newPage) => {
+        if (newPage > 0 && newPage <= totalPage) {
+            setPage(newPage);   
+            window.scrollTo({ top: 0, behavior: "smooth" })
+        }
     }
 
     return (
@@ -67,8 +80,8 @@ const Products = () => {
                             {
                                 products.length === 0 ? (<div className="flex items-center justify-center w-full h-full"><h1 className="text-3xl">No products found</h1></div>) : (<div className="grid min-h-screen grid-cols-3 gap-4 ml-10">
                                     {
-                                        products.map((prooduct) => (
-                                            <ProductCurd key={prooduct._id} prooduct={prooduct} />
+                                        products.map((product) => (
+                                            <ProductCurd key={product._id} product={product} />
                                         ))
                                     }
 
@@ -76,7 +89,26 @@ const Products = () => {
                             }
                         </div>)
                     }
+                    {/* Pagination */}
+
+                    <div className="flex items-center justify-center gap-2 my-8 text-xl">
+                        <button className="border border-black rounded-full btn"
+                        disabled={page===1}
+                        onClick={() => handlePageChange(page - 1)}>
+                            <FaRegArrowAltCircleRight />
+                        </button>
+                        <p className="flex items-start justify-center mx-10">
+                            Page {page}of{totalPage}
+                        </p>
+                        <button className="border border-black rounded-full btn"
+                          disabled={page===totalPage}
+                        onClick={() => handlePageChange(page + 1)}>
+                            <FaRegArrowAltCircleLeft />
+                        </button>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     );

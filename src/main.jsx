@@ -13,9 +13,11 @@ import AuthProvider from './AuthProvider/AuthProvider.';
 import DashboardLayoutes from './layoutes/DashboardLayoutes';
 import PrivateRoute from './Components/Private/PrivateRoute';
 import Overview from './Pages/DashboardComponents/Overview/Overview';
-// import SellerRoute from './Components/Private/SellerRoute';
+import SellerRoute from './Components/Private/SellerRoute';
 import MyProducts from './Pages/DashboardComponents/Overview/Seller/MyProducts';
 import AddProduct from './Pages/DashboardComponents/Overview/Seller/AddProduct';
+import MyWishList from './Pages/Buyer/MyWishList';
+import BuyerRoute from './Components/Private/BuyerRoute';
 // import AuthProvider from './AuthProvider/AuthProvider.';
 
 const router = createBrowserRouter([
@@ -50,7 +52,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/",
     element: <PrivateRoute>
       <DashboardLayoutes />
     </PrivateRoute>,
@@ -64,17 +66,31 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-products",
         element: (
-        // <PrivateRoute>
-          <MyProducts />
-        // </PrivateRoute>
+          <SellerRoute>
+
+            <MyProducts />
+          </SellerRoute>
+         
         )
 
       },
       {
         path: "/dashboard/add-products",
-        element: (
+        element: (<SellerRoute>
+
           <AddProduct />
-       )
+        </SellerRoute>
+        )
+
+      },
+      // buyer router
+      {
+        path: "/dashboard/MyWishList",
+        element: (
+        <BuyerRoute>
+          <MyWishList />
+         </BuyerRoute>
+        )
 
       },
     ]

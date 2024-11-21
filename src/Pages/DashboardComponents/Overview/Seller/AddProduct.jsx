@@ -17,7 +17,7 @@ export default function AddProduct() {
     const title = data.title;
     const brand = data.brand;
     const price = parseFloat(data.price);
-    const stock = data.stock;
+    const stock = parseFloat(data.stock);
     const category = data.category;
     const photo = data.photo
     const description = data.description;
@@ -63,14 +63,14 @@ export default function AddProduct() {
             <label className="label">
               <span className="label-text">Price</span>
             </label>
-            <input {...register("price", { required: true })} type="text" placeholder="price" className="input input-bordered" />
+            <input {...register("price", { required: true })} type="rext" placeholder="price" className="input input-bordered" />
             {errors.price && <span className="text-red-600">This field is required</span>}
           </div>
           <div className="w-full form-control">
             <label className="label">
               <span className="label-text">Stock</span>
             </label>
-            <input {...register("stock", { required: true })} type="text" placeholder="stock" className="input input-bordered" />
+            <input {...register("stock", { required: true })} type="number" placeholder="stock" className="input input-bordered" />
             {errors.stock && <span className="text-red-600">This field is required</span>}
           </div>
         </div>
